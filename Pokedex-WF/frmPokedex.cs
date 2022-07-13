@@ -23,6 +23,11 @@ namespace Pokedex_WF
         
         private void frmPokedex_Load(object sender, EventArgs e)
         {
+            cargar();
+        }
+
+        private void cargar()
+        {
             PokemonNegocio negocio = new PokemonNegocio();
 
             try
@@ -62,6 +67,7 @@ namespace Pokedex_WF
         {
             frmAltaPokemon alta = new frmAltaPokemon();
             alta.ShowDialog();
+            cargar();
         }
     }
 }
