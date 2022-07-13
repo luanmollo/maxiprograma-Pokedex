@@ -34,6 +34,7 @@ namespace Pokedex_WF
                 nuevo.Numero = int.Parse(txtNumero.Text);
                 nuevo.Nombre = txtNombre.Text;
                 nuevo.Descripcion = txtDescripcion.Text;
+                nuevo.UrlImagen = txtImagen.Text;
                 nuevo.Tipo = (Elemento)cboTipo.SelectedItem;
                 nuevo.Debilidad = (Elemento)cboDebilidad.SelectedItem;
 
@@ -61,6 +62,23 @@ namespace Pokedex_WF
             {
 
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void txtImagen_Leave(object sender, EventArgs e)
+        {
+            cargarImagen(txtImagen.Text);
+        }
+
+        private void cargarImagen(string imagen)
+        {
+            try
+            {
+                pbPokemon.Load(imagen);
+            }
+            catch (Exception ex)
+            {
+                pbPokemon.Load("https://www.sinrumbofijo.com/wp-content/uploads/2016/05/default-placeholder.png");
             }
         }
     }
