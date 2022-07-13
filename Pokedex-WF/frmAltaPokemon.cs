@@ -34,10 +34,28 @@ namespace Pokedex_WF
                 nuevo.Numero = int.Parse(txtNumero.Text);
                 nuevo.Nombre = txtNombre.Text;
                 nuevo.Descripcion = txtDescripcion.Text;
+                nuevo.Tipo = (Elemento)cboTipo.SelectedItem;
+                nuevo.Debilidad = (Elemento)cboDebilidad.SelectedItem;
 
                 negocio.Agregar(nuevo);
                 MessageBox.Show("Agregado exitosamente");
                 Close();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void frmAltaPokemon_Load(object sender, EventArgs e)
+        {
+            ElementoNegocio elementoNegocio = new ElementoNegocio();
+
+            try
+            {
+                cboTipo.DataSource = elementoNegocio.Listar();
+                cboDebilidad.DataSource = elementoNegocio.Listar();
             }
             catch (Exception ex)
             {

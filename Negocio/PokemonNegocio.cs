@@ -72,7 +72,9 @@ namespace Negocio
             
             try
             {
-                datos.ConfigurarConsulta("insert into POKEMONS(Numero, Nombre, Descripcion, Activo) values (" + nuevo.Numero + ", '" + nuevo.Nombre + "', '" + nuevo.Descripcion + "', 1)");
+                datos.ConfigurarConsulta("insert into POKEMONS(Numero, Nombre, Descripcion, IdTipo, IdDebilidad, Activo) values (" + nuevo.Numero + ", '" + nuevo.Nombre + "', '" + nuevo.Descripcion + "', @IdTipo , @IdDebilidad , 1)");
+                datos.ConfigurarParametros("@IdTipo", nuevo.Tipo.Id);
+                datos.ConfigurarParametros("@IdDebilidad", nuevo.Debilidad.Id);
                 datos.EjecutarAccion();
 
             }

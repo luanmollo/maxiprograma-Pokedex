@@ -63,6 +63,11 @@ namespace Negocio
             }
         }
 
+        public void ConfigurarParametros(string nombre, object valor)
+        {
+            comando.Parameters.AddWithValue(nombre, valor);
+        }
+
         public void CerrarConexion()
         {
             if(lector != null)
