@@ -42,7 +42,17 @@ namespace Negocio
                     aux.Numero = (int)lector["Numero"];
                     aux.Nombre = (string)lector["Nombre"];
                     aux.Descripcion = (string)lector["Descripcion"];
-                    aux.UrlImagen = (string)lector["UrlImagen"];
+
+                    /*
+                    if (!(lector.IsDBNull(lector.GetOrdinal("UrlImagen"))))
+                    {
+                        aux.UrlImagen = (string)lector["UrlImagen"];
+                    } 
+                    */
+
+                    if (!(lector["UrlImagen"] is DBNull))
+                        aux.UrlImagen = (string)lector["UrlImagen"];
+
                     aux.Tipo = new Elemento();
                     aux.Tipo.Descripcion = (string)lector["Tipo"];
                     aux.Debilidad = new Elemento();
