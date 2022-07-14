@@ -23,7 +23,7 @@ namespace Negocio
             {
                 conexion.ConnectionString = "server=CYS160PC\\SQLEXPRESS; database=POKEDEX_DB; integrated security=true";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "select Numero, Nombre, p.Descripcion, UrlImagen, e.Descripcion as Tipo, d.Descripcion as Debilidad from pokemons p, elementos e, elementos d where  p.IdTipo = e.Id and p.IdDebilidad = d.Id";
+                comando.CommandText = "select p.Id, Numero, Nombre, p.Descripcion, UrlImagen, e.Descripcion as Tipo, d.Descripcion as Debilidad, p.IdTipo, p.IdDebilidad from pokemons p, elementos e, elementos d where  p.IdTipo = e.Id and p.IdDebilidad = d.Id";
                 comando.Connection = conexion;
 
                 conexion.Open();
@@ -39,6 +39,7 @@ namespace Negocio
                     aux.Descripcion = lector.GetString(2);
                     */
 
+                    aux.Id = (int)lector["Id"];
                     aux.Numero = (int)lector["Numero"];
                     aux.Nombre = (string)lector["Nombre"];
                     aux.Descripcion = (string)lector["Descripcion"];
@@ -54,8 +55,10 @@ namespace Negocio
                         aux.UrlImagen = (string)lector["UrlImagen"];
 
                     aux.Tipo = new Elemento();
+                    aux.Tipo.Id = (int)lector["IdTipo"];
                     aux.Tipo.Descripcion = (string)lector["Tipo"];
                     aux.Debilidad = new Elemento();
+                    aux.Debilidad.Id = (int)lector["IdDebilidad"];
                     aux.Debilidad.Descripcion = (string)lector["Debilidad"];
 
                     lista.Add(aux);
@@ -99,5 +102,34 @@ namespace Negocio
                 datos.CerrarConexion();
             }
         }
+
+        public void Modificar(Pokemon modificar)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.ConfigurarConsulta("update pokemons set Numero = @Numero, Nombre = @Nombre, Descripcion = @Descripcion, UrlImagen = @UrlImagen, IdTipo = @IdTipo, IdDebilidad = @IdDebilidad where id=@Id");
+                datos.ConfigurarParametros("@Numero", modificar.Numero);
+                datos.ConfigurarParametros("@Nombre", modificar.Nombre);
+                datos.ConfigurarParametros("@Descripcion", modificar.Descripcion);
+                datos.ConfigurarParametros("@UrlImagen", modificar.UrlImagen);
+                datos.ConfigurarParametros("@IdTipo", modificar.Tipo.Id);
+                datos.ConfigurarParametros("@IdDebilidad", modificar.Debilidad.Id);
+                datos.ConfigurarParametros("@Id", modificar.Id);
+
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+
     }
 }
