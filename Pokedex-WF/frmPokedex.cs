@@ -83,6 +83,16 @@ namespace Pokedex_WF
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            Eliminar();
+        }
+
+        private void btnOcultar_Click(object sender, EventArgs e)
+        {
+            Eliminar(true);
+        }
+
+        private void Eliminar(bool logico = false)
+        {
             PokemonNegocio pokemonNegocio = new PokemonNegocio();
             Pokemon seleccionado;
 
@@ -93,13 +103,21 @@ namespace Pokedex_WF
                 if (respuesta == DialogResult.Yes)
                 {
                     seleccionado = (Pokemon)dgvPokemons.CurrentRow.DataBoundItem;
-                    pokemonNegocio.Eliminar(seleccionado.Id);
+
+                    if (logico)
+                    {
+                        pokemonNegocio.Ocultar(seleccionado.Id);
+                    }
+                    else
+                    {
+                        pokemonNegocio.Eliminar(seleccionado.Id);
+                    }
+
                     cargar();
                 }
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.ToString());
             }
         }
