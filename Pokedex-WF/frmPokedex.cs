@@ -130,12 +130,12 @@ namespace Pokedex_WF
             }
         }
 
-        private void btnFiltro_Click(object sender, EventArgs e)
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
         {
             List<Pokemon> listaFiltrada;
             string filtro = txtFiltro.Text;
 
-            if(filtro != "")
+            if (filtro != "")
             {
                 listaFiltrada = listaPokemon.FindAll(x => x.Nombre.ToUpper().Contains(filtro.ToUpper()));
             }

@@ -107,26 +107,26 @@
             this.lblFiltro.AutoSize = true;
             this.lblFiltro.Location = new System.Drawing.Point(60, 46);
             this.lblFiltro.Name = "lblFiltro";
-            this.lblFiltro.Size = new System.Drawing.Size(32, 13);
+            this.lblFiltro.Size = new System.Drawing.Size(66, 13);
             this.lblFiltro.TabIndex = 6;
-            this.lblFiltro.Text = "Filtro:";
+            this.lblFiltro.Text = "Filtro básico:";
             // 
             // txtFiltro
             // 
-            this.txtFiltro.Location = new System.Drawing.Point(111, 43);
+            this.txtFiltro.Location = new System.Drawing.Point(140, 43);
             this.txtFiltro.Name = "txtFiltro";
             this.txtFiltro.Size = new System.Drawing.Size(165, 20);
             this.txtFiltro.TabIndex = 7;
+            this.txtFiltro.TextChanged += new System.EventHandler(this.txtFiltro_TextChanged);
             // 
             // btnFiltro
             // 
-            this.btnFiltro.Location = new System.Drawing.Point(303, 40);
+            this.btnFiltro.Location = new System.Drawing.Point(469, 476);
             this.btnFiltro.Name = "btnFiltro";
-            this.btnFiltro.Size = new System.Drawing.Size(75, 23);
+            this.btnFiltro.Size = new System.Drawing.Size(120, 23);
             this.btnFiltro.TabIndex = 8;
-            this.btnFiltro.Text = "Buscar";
+            this.btnFiltro.Text = "Búsqueda avanzada";
             this.btnFiltro.UseVisualStyleBackColor = true;
-            this.btnFiltro.Click += new System.EventHandler(this.btnFiltro_Click);
             // 
             // frmPokedex
             // 
