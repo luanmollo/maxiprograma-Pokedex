@@ -43,6 +43,7 @@
             this.lblImagen = new System.Windows.Forms.Label();
             this.txtImagen = new System.Windows.Forms.TextBox();
             this.pbPokemon = new System.Windows.Forms.PictureBox();
+            this.btnAgregarImagen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbPokemon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,26 +78,26 @@
             // 
             this.txtNumero.Location = new System.Drawing.Point(152, 27);
             this.txtNumero.Name = "txtNumero";
-            this.txtNumero.Size = new System.Drawing.Size(100, 20);
+            this.txtNumero.Size = new System.Drawing.Size(191, 20);
             this.txtNumero.TabIndex = 0;
             // 
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(152, 57);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(100, 20);
+            this.txtNombre.Size = new System.Drawing.Size(191, 20);
             this.txtNombre.TabIndex = 1;
             // 
             // txtDescripcion
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(152, 88);
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(100, 20);
+            this.txtDescripcion.Size = new System.Drawing.Size(191, 20);
             this.txtDescripcion.TabIndex = 2;
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(56, 241);
+            this.btnAceptar.Location = new System.Drawing.Point(152, 240);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 6;
@@ -106,7 +107,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(169, 241);
+            this.btnCancelar.Location = new System.Drawing.Point(265, 240);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 7;
@@ -120,7 +121,7 @@
             this.cboTipo.FormattingEnabled = true;
             this.cboTipo.Location = new System.Drawing.Point(152, 165);
             this.cboTipo.Name = "cboTipo";
-            this.cboTipo.Size = new System.Drawing.Size(100, 21);
+            this.cboTipo.Size = new System.Drawing.Size(191, 21);
             this.cboTipo.TabIndex = 4;
             // 
             // lblTipo
@@ -147,7 +148,7 @@
             this.cboDebilidad.FormattingEnabled = true;
             this.cboDebilidad.Location = new System.Drawing.Point(152, 197);
             this.cboDebilidad.Name = "cboDebilidad";
-            this.cboDebilidad.Size = new System.Drawing.Size(100, 21);
+            this.cboDebilidad.Size = new System.Drawing.Size(191, 21);
             this.cboDebilidad.TabIndex = 5;
             // 
             // lblImagen
@@ -169,18 +170,29 @@
             // 
             // pbPokemon
             // 
-            this.pbPokemon.Location = new System.Drawing.Point(311, 27);
+            this.pbPokemon.Location = new System.Drawing.Point(407, 27);
             this.pbPokemon.Name = "pbPokemon";
             this.pbPokemon.Size = new System.Drawing.Size(221, 206);
             this.pbPokemon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbPokemon.TabIndex = 14;
             this.pbPokemon.TabStop = false;
             // 
+            // btnAgregarImagen
+            // 
+            this.btnAgregarImagen.Location = new System.Drawing.Point(268, 123);
+            this.btnAgregarImagen.Name = "btnAgregarImagen";
+            this.btnAgregarImagen.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregarImagen.TabIndex = 15;
+            this.btnAgregarImagen.Text = "Examinar";
+            this.btnAgregarImagen.UseVisualStyleBackColor = true;
+            this.btnAgregarImagen.Click += new System.EventHandler(this.btnAgregarImagen_Click);
+            // 
             // frmAltaPokemon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(587, 295);
+            this.ClientSize = new System.Drawing.Size(667, 295);
+            this.Controls.Add(this.btnAgregarImagen);
             this.Controls.Add(this.pbPokemon);
             this.Controls.Add(this.txtImagen);
             this.Controls.Add(this.lblImagen);
@@ -223,5 +235,6 @@
         private System.Windows.Forms.Label lblImagen;
         private System.Windows.Forms.TextBox txtImagen;
         private System.Windows.Forms.PictureBox pbPokemon;
+        private System.Windows.Forms.Button btnAgregarImagen;
     }
 }

@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
 using Negocio;
+using System.Configuration;
 
 namespace Pokedex_WF
 {
     public partial class frmAltaPokemon : Form
     {
         private Pokemon pokemon = null;
+        private OpenFileDialog archivo = null;
 
         public frmAltaPokemon()
         {
@@ -61,6 +64,13 @@ namespace Pokedex_WF
                     negocio.Agregar(pokemon);
                     MessageBox.Show("Agregado exitosamente");
                 }
+
+                //guardo la imagen (si la levantó localmente)
+                if(archivo != null && !(txtImagen.Text.ToUpper().Contains("HTTP")))
+                {
+                    File.Copy(archivo.FileName, ConfigurationManager.AppSettings["carpeta-imagenes"] + archivo.SafeFileName);
+                }
+
 
                 Close();
             }
@@ -119,6 +129,24 @@ namespace Pokedex_WF
             {
                 pbPokemon.Load("https://www.sinrumbofijo.com/wp-content/uploads/2016/05/default-placeholder.png");
             }
+        }
+
+        private void btnAgregarImagen_Click(object sender, EventArgs e)
+        {
+            archivo = new OpenFileDialog();
+            archivo.Filter = "jpg|*.jpg|png|*.png";
+            
+            if(archivo.ShowDialog() == DialogResult.OK)
+            {
+                txtImagen.Text = archivo.FileName;
+                cargarImagen(archivo.FileName);
+                
+            }
+
+            //guardo la imagen
+            //File.Copy(archivo.FileName, ConfigurationManager.AppSettings["carpeta-imagenes"] + archivo.SafeFileName);
+
+
         }
     }
 }
