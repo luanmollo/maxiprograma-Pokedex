@@ -172,12 +172,60 @@ namespace Pokedex_WF
             }
         }
 
+        private bool validarFiltroAvanzado()
+        {
+            if(cboCampo.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor, seleccione el campo para filtrar");
+                return true;
+            }
+
+            if(cboCriterio.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor, seleccione el criterio para filtrar");
+                return true;
+            }
+
+            if(cboCampo.SelectedItem.ToString() == "Número")
+            {
+                if (string.IsNullOrEmpty(txtFiltroAvanzado.Text))
+                {
+                    MessageBox.Show("Ingrese un filtro para numéricos");
+                    return true;
+                }
+                if (!(validarSoloNumeros(txtFiltroAvanzado.Text)))
+                {
+                    MessageBox.Show("Ingrese sólo números para filtrar por campo numérico");
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private bool validarSoloNumeros(string cadena)
+        {
+            foreach (char caracter in cadena)
+            {
+                if (!(char.IsNumber(caracter))){
+                    return false;
+                }
+            }
+            
+            return true;
+        }
+
         private void btnFiltroAvanzado_Click(object sender, EventArgs e)
         {
             PokemonNegocio negocio = new PokemonNegocio();
 
             try
             {
+                if (validarFiltroAvanzado())
+                {
+                    return;
+                }
+
                 string campo = cboCampo.SelectedItem.ToString();
                 string criterio = cboCriterio.SelectedItem.ToString();
                 string filtro = txtFiltroAvanzado.Text;
